@@ -11,6 +11,7 @@
 //!let is_logged_in = user_from_db.bet().on_a_stack().no_cap();
 //!
 //!let known_failure: Result<(), &str> = Err("sussy af fr fr");
+//!// assert_eq!(known_failure.unwrap_err(), "sussy af fr fr");
 //!assert_eq!(known_failure.big_yikes(), "sussy af fr fr");
 //!
 //!let my_opt: Option<i64> = Some(-3);
