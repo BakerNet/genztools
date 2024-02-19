@@ -7,17 +7,17 @@ pub trait GenZOption {
 
     /// Returns `true` if the option is a [`Some`] value.
     ///
-    /// See [`Option::is_ok`](std::option::Option::is_ok) documentation for more details.
+    /// See [`Option::is_ok`](std::option::Option::is_some) documentation for more details.
     fn no_cap(&self) -> bool;
 
     /// Returns `true` if the option is a [`Some`] and the value inside of it matches a predicate.
     ///
-    /// See [`Option::is_ok_and`](std::option::Option::is_ok_and) documentation for more details.
+    /// See [`Option::is_ok_and`](std::option::Option::is_some_and) documentation for more details.
     fn no_cap_and(self, f: impl FnOnce(Self::Inner) -> bool) -> bool;
 
     /// Returns `true` if the option is a [`None`] value.
     ///
-    /// See [`Option::is_err`](std::option::Option::is_err) documentation for more details.
+    /// See [`Option::is_err`](std::option::Option::is_none) documentation for more details.
     fn cap(&self) -> bool;
 
     /////////////////////////////////////////////////////////////////////////
