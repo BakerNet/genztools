@@ -1,4 +1,4 @@
-//! Making Rust more accessible and readable for the upcoming genration of Rust engineers
+//! Making Rust more accessible and readable for the upcoming generation of Rust engineers
 //!
 //! Provides alternative method names for common [`Option`] and [`Result`] methods
 //!

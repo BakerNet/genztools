@@ -3,7 +3,7 @@
 [![Crates.io Version](https://img.shields.io/crates/v/genztools)](https://crates.io/crates/genztools)
 [![docs.rs](https://img.shields.io/docsrs/genztools)](https://docs.rs/genztools/latest/genztools/)
 
-Making Rust more accessible and readable for the upcoming genration of Rust engineers
+Making Rust more accessible and readable for the upcoming generation of Rust engineers
 
 ## Examples:
 
