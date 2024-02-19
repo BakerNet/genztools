@@ -1,6 +1,6 @@
 [package]
 name = "genztools"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Hans Baker"]
 edition = "2021"
 license-file = "LICENSE"
