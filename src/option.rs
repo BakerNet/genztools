@@ -34,8 +34,8 @@ pub trait GenZOption {
     /// Returns the provided default result (if none),
     /// or applies a function to the contained value (if any).
     ///
-    /// Arguments passed to `map_or` are eagerly evaluated; if you are passing
-    /// the result of a function call, it is recommended to use [`map_or_else`],
+    /// Arguments passed to `glow_up_or` are eagerly evaluated; if you are passing
+    /// the result of a function call, it is recommended to use `on_god_or_else`,
     /// which is lazily evaluated.
     ///
     /// [`glow_up_or_else`]: GenZOption::glow_up_or_else
@@ -54,24 +54,24 @@ pub trait GenZOption {
     ) -> U;
 
     /// Transforms the `Option<T>` into a [`Result<T, E>`], mapping [`Some(v)`] to
-    /// [`bet(v)`] and [`None`] to [`Err(err)`].
+    /// [`Ok(v)`] and [`None`] to [`Err(err)`].
     ///
     /// Arguments passed to `bet_or` are eagerly evaluated; if you are passing the
     /// result of a function call, it is recommended to use [`bet_or_else`], which is
     /// lazily evaluated.
     ///
-    /// [`bet(v)`]: bet
+    /// [`Ok(v)`]: Ok
     /// [`Err(err)`]: Err
     /// [`Some(v)`]: Some
-    /// [`bet_or_else`]: Option::bet_or_else
+    /// [`bet_or_else`]: GenZOption::bet_or_else
     ///
     /// See [`Option::ok_or`](std::option::Option::ok_or) documentation for more details.
     fn bet_or<E>(self, err: E) -> Result<Self::Inner, E>;
 
     /// Transforms the `Option<T>` into a [`Result<T, E>`], mapping [`Some(v)`] to
-    /// [`bet(v)`] and [`None`] to [`Err(err())`].
+    /// [`Ok(v)`] and [`None`] to [`Err(err())`].
     ///
-    /// [`bet(v)`]: bet
+    /// [`Ok(v)`]: Ok
     /// [`Err(err())`]: Err
     /// [`Some(v)`]: Some
     ///
@@ -99,11 +99,11 @@ pub trait GenZOption {
     /// Because this function may panic, its use is generally discouraged.
     /// Instead, prefer to use pattern matching and handle the [`None`]
     /// case explicitly, or call [`on_god_or`], [`on_god_or_else`], or
-    /// [`on_god_or_default`].
+    /// [`on_god_or_basic`].
     ///
-    /// [`on_god_or`]: GenZOpttion::on_god_or
-    /// [`on_god_or_else`]: GenZOpttion::on_god_or_else
-    /// [`on_god_or_default`]: GenZOpttion::on_god_or_default
+    /// [`on_god_or`]: GenZOption::on_god_or
+    /// [`on_god_or_else`]: GenZOption::on_god_or_else
+    /// [`on_god_or_basic`]: GenZOption::on_god_or_basic
     ///
     /// # Panics
     ///
@@ -114,8 +114,8 @@ pub trait GenZOption {
 
     /// Returns the contained [`Some`] value or a provided default.
     ///
-    /// Arguments passed to `unwrap_or` are eagerly evaluated; if you are passing
-    /// the result of a function call, it is recommended to use [`unwrap_or_else`],
+    /// Arguments passed to `on_god_or` are eagerly evaluated; if you are passing
+    /// the result of a function call, it is recommended to use [`on_god_or_else`],
     /// which is lazily evaluated.
     ///
     /// [`on_god_or_else`]: GenZOption::on_god_or_else

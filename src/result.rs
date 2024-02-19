@@ -32,9 +32,9 @@ pub trait GenZResult {
     // Adapter for each variant
     /////////////////////////////////////////////////////////////////////////
 
-    /// Converts from `Result<Self::Inner, Self::ErrorType>` to [`Option<Self::Inner>`].
+    /// Converts from `Result<T, E>` to [`Option<T>`].
     ///
-    /// Converts `self` into an [`Option<Self::Inner>`], consuming `self`,
+    /// Converts `self` into an [`Option<T>`], consuming `self`,
     /// and discarding the error, if any.
     ///
     /// See [`Result::ok`](std::result::Result::ok) documentation for more details.
@@ -44,7 +44,7 @@ pub trait GenZResult {
     // Transforming contained values
     /////////////////////////////////////////////////////////////////////////
 
-    /// Maps a `Result<Self::Inner, Self::ErrorType>` to `Result<U, Self::ErrorType>` by applying a function to a
+    /// Maps a `Result<T, E>` to `Result<U, E>` by applying a function to a
     /// contained [`Ok`] value, leaving an [`Err`] value untouched.
     ///
     /// This function can be used to compose the results of two functions.
@@ -64,7 +64,7 @@ pub trait GenZResult {
     /// See [`Result::map_or`](std::result::Result::map_or) documentation for more details.
     fn glow_up_or<U, F: FnOnce(Self::Inner) -> U>(self, default: U, f: F) -> U;
 
-    /// Maps a `Result<Self::Inner, Self::ErrorType>` to `U` by applying fallback function `default` to
+    /// Maps a `Result<T, E>` to `U` by applying fallback function `default` to
     /// a contained [`Err`] value, or function `f` to a contained [`Ok`] value.
     ///
     /// This function can be used to unpack a successful result
@@ -78,7 +78,7 @@ pub trait GenZResult {
         f: F,
     ) -> U;
 
-    /// Maps a `Result<Self::Inner, Self::ErrorType>` to `Result<Self::Inner, F>` by applying a function to a
+    /// Maps a `Result<T, E>` to `Result<T, F>` by applying a function to a
     /// contained [`Err`] value, leaving an [`Ok`] value untouched.
     ///
     /// This function can be used to pass through a successful result while handling
@@ -97,11 +97,11 @@ pub trait GenZResult {
     /// Because this function may panic, its use is generally discouraged.
     /// Instead, prefer to use pattern matching and handle the [`Err`]
     /// case explicitly, or call [`on_god_or`], [`on_god_or_else`], or
-    /// [`on_god_or_default`].
+    /// [`on_god_or_basic`].
     ///
     /// [`on_god_or`]: GenZResult::on_god_or
     /// [`on_god_or_else`]: GenZResult::on_god_or_else
-    /// [`on_god_or_default`]: GenZResult::on_god_or_default
+    /// [`on_god_or_basic`]: GenZResult::on_god_or_basic
     ///
     /// # Panics
     ///
@@ -119,11 +119,11 @@ pub trait GenZResult {
     /// Because this function may panic, its use is generally discouraged.
     /// Instead, prefer to use pattern matching and handle the [`Err`]
     /// case explicitly, or call [`on_god_or`], [`on_god_or_else`], or
-    /// [`on_god_or_default`].
+    /// [`on_god_or_basic`].
     ///
     /// [`on_god_or`]: GenZResult::on_god_or
     /// [`on_god_or_else`]: GenZResult::on_god_or_else
-    /// [`on_god_or_default`]: GenZResult::on_god_or_default
+    /// [`on_god_or_basic`]: GenZResult::on_god_or_basic
     ///
     /// # Panics
     ///
