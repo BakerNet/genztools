@@ -7,17 +7,17 @@ pub trait GenZOption {
 
     /// Returns `true` if the option is a [`Some`] value.
     ///
-    /// See [`Option::is_ok`](std::result::Option::is_ok) documentation for more details.
+    /// See [`Option::is_ok`](std::option::Option::is_ok) documentation for more details.
     fn no_cap(&self) -> bool;
 
     /// Returns `true` if the option is a [`Some`] and the value inside of it matches a predicate.
     ///
-    /// See [`Option::is_ok_and`](std::result::Option::is_ok_and) documentation for more details.
+    /// See [`Option::is_ok_and`](std::option::Option::is_ok_and) documentation for more details.
     fn no_cap_and(self, f: impl FnOnce(Self::Inner) -> bool) -> bool;
 
     /// Returns `true` if the option is a [`None`] value.
     ///
-    /// See [`Option::is_err`](std::result::Option::is_err) documentation for more details.
+    /// See [`Option::is_err`](std::option::Option::is_err) documentation for more details.
     fn cap(&self) -> bool;
 
     /////////////////////////////////////////////////////////////////////////
@@ -28,7 +28,7 @@ pub trait GenZOption {
     ///
     /// This function can be used to compose the results of two functions.
     ///
-    /// See [`Option::map`](std::result::Option::map) documentation for more details.
+    /// See [`Option::map`](std::option::Option::map) documentation for more details.
     fn glow_up<U, F: FnOnce(Self::Inner) -> U>(self, op: F) -> Option<U>;
 
     /// Returns the provided default result (if none),
@@ -40,13 +40,13 @@ pub trait GenZOption {
     ///
     /// [`glow_up_or_else`]: GenZOption::glow_up_or_else
     ///
-    /// See [`Option::map_or`](std::result::Option::map_or) documentation for more details.
+    /// See [`Option::map_or`](std::option::Option::map_or) documentation for more details.
     fn glow_up_or<U, F: FnOnce(Self::Inner) -> U>(self, default: U, f: F) -> U;
 
     /// Computes a default function result (if none), or
     /// applies a different function to the contained value (if any).
     ///
-    /// See [`Option::map_or_else`](std::result::Option::map_or_else) documentation for more details.
+    /// See [`Option::map_or_else`](std::option::Option::map_or_else) documentation for more details.
     fn glow_up_or_else<U, D: FnOnce() -> U, F: FnOnce(Self::Inner) -> U>(
         self,
         default: D,
@@ -65,7 +65,7 @@ pub trait GenZOption {
     /// [`Some(v)`]: Some
     /// [`bet_or_else`]: Option::bet_or_else
     ///
-    /// See [`Option::ok_or`](std::result::Option::ok_or) documentation for more details.
+    /// See [`Option::ok_or`](std::option::Option::ok_or) documentation for more details.
     fn bet_or<E>(self, err: E) -> Result<Self::Inner, E>;
 
     /// Transforms the `Option<T>` into a [`Result<T, E>`], mapping [`Some(v)`] to
@@ -75,7 +75,7 @@ pub trait GenZOption {
     /// [`Err(err())`]: Err
     /// [`Some(v)`]: Some
     ///
-    /// See [`Option::ok_or_else`](std::result::Option::ok_or_else) documentation for more details.
+    /// See [`Option::ok_or_else`](std::option::Option::ok_or_else) documentation for more details.
     fn bet_or_else<E, F>(self, err: F) -> Result<Self::Inner, E>
     where
         F: FnOnce() -> E;
@@ -91,7 +91,7 @@ pub trait GenZOption {
     /// Panics if the value is a [`None`] with a custom panic message provided by
     /// `msg`.
     ///
-    /// See [`Option::expect`](std::result::Option::expect) documentation for more details.
+    /// See [`Option::expect`](std::option::Option::expect) documentation for more details.
     fn based(self, msg: &str) -> Self::Inner;
 
     /// Returns the contained [`Some`] value, consuming the `self` value.
@@ -109,7 +109,7 @@ pub trait GenZOption {
     ///
     /// Panics if the self value equals [`None`].
     ///
-    /// See [`Option::unwrap`](std::result::Option::unwrap) documentation for more details.
+    /// See [`Option::unwrap`](std::option::Option::unwrap) documentation for more details.
     fn on_god(self) -> Self::Inner;
 
     /// Returns the contained [`Some`] value or a provided default.
@@ -120,12 +120,12 @@ pub trait GenZOption {
     ///
     /// [`on_god_or_else`]: GenZOption::on_god_or_else
     ///
-    /// See [`Option::unwrap_or`](std::result::Option::unwrap_or) documentation for more details.
+    /// See [`Option::unwrap_or`](std::option::Option::unwrap_or) documentation for more details.
     fn on_god_or(self, default: Self::Inner) -> Self::Inner;
 
     /// Returns the contained [`Some`] value or computes it from a closure.
     ///
-    /// See [`Option::unwrap_or_else`](std::result::Option::unwrap_or_else) documentation for more details.
+    /// See [`Option::unwrap_or_else`](std::option::Option::unwrap_or_else) documentation for more details.
     fn on_god_or_else<F: FnOnce() -> Self::Inner>(self, op: F) -> Self::Inner;
 
     /// Returns the contained [`Some`] value or a default
@@ -134,7 +134,7 @@ pub trait GenZOption {
     /// value, otherwise if [`None`], returns the default value for that
     /// type.
     ///
-    /// See [`Option::unwrap_or_default`](std::result::Option::unwrap_or_default) documentation for more details.
+    /// See [`Option::unwrap_or_default`](std::option::Option::unwrap_or_default) documentation for more details.
     fn on_god_or_basic(self) -> Self::Inner
     where
         Self::Inner: Default;
@@ -212,7 +212,7 @@ pub trait GenZNestedOption: GenZOption {
     ///
     /// Flattening only removes one level of nesting at a time:
     ///
-    /// See [`Option::flatten`](std::result::Option::flatten) documentation for more details.
+    /// See [`Option::flatten`](std::option::Option::flatten) documentation for more details.
     fn on_a_stack(self) -> Option<Self::InnerInner>;
 }
 
