@@ -277,19 +277,20 @@ impl<T, E> GenZResult for Result<T, E> {
     }
 }
 
-pub trait GenZNestedResult: GenZResult {
-    type InnerInner;
-    /// Converts from `Result<Result<T, E>, E>` to `Result<T, E>`
-    ///
-    /// Flattening only removes one level of nesting at a time:
-    ///
-    /// See [`Result::flatten`](std::result::Result::flatten) documentation for more details.
-    fn on_a_stack(self) -> Result<Self::InnerInner, Self::ErrorType>;
-}
-
-impl<T, E> GenZNestedResult for Result<Result<T, E>, E> {
-    type InnerInner = T;
-    fn on_a_stack(self) -> Result<Self::InnerInner, Self::ErrorType> {
-        self.flatten()
-    }
-}
+// Disabled because [`Issue #70142`](https://github.com/rust-lang/rust/issues/70142)
+// pub trait GenZNestedResult: GenZResult {
+//     type InnerInner;
+//     /// Converts from `Result<Result<T, E>, E>` to `Result<T, E>`
+//     ///
+//     /// Flattening only removes one level of nesting at a time:
+//     ///
+//     /// See [`Result::flatten`](std::result::Result::flatten) documentation for more details.
+//     fn on_a_stack(self) -> Result<Self::InnerInner, Self::ErrorType>;
+// }
+//
+// impl<T, E> GenZNestedResult for Result<Result<T, E>, E> {
+//     type InnerInner = T;
+//     fn on_a_stack(self) -> Result<Self::InnerInner, Self::ErrorType> {
+//         self.flatten()
+//     }
+// }

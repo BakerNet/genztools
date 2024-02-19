@@ -1,5 +1,3 @@
-#![feature(result_flattening)]
-
 mod result;
 pub use result::*;
 mod option;
